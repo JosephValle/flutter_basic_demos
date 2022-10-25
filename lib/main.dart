@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Demo App',
               theme: state.theme,
-              home: Home(),
+              home: const Home(),
             );
           },
         ),

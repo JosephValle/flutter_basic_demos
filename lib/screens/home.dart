@@ -55,9 +55,9 @@ class _HomeState extends State<Home> {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(),
+          const CircularProgressIndicator(),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               "Download in Progress",
               style: Theme.of(context).textTheme.bodyText1,
@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               "Image:",
               style: Theme.of(context).textTheme.bodyText1,
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
             child: Image.file(context.read<DownloadBloc>().file!),
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               "User Data:",
               style: Theme.of(context).textTheme.bodyText1,

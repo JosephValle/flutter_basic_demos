@@ -17,7 +17,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text("Settings"),
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: 300,
           child: ElevatedButton(
             style: ButtonStyle(
