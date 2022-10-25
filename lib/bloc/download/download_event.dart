@@ -4,11 +4,11 @@ abstract class DownloadEvent extends Equatable {
   const DownloadEvent();
 }
 
-class DownloadImage extends DownloadEvent {
+class DownloadAssets extends DownloadEvent {
   final String imageUrl;
   final String userUrl;
 
-  const DownloadImage(this.imageUrl, this.userUrl);
+  const DownloadAssets(this.imageUrl, this.userUrl);
 
   @override
   List<Object?> get props => [imageUrl, userUrl];

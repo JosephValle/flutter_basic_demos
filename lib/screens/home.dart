@@ -36,14 +36,17 @@ class _HomeState extends State<Home> {
   }
 
   buildBody(BuildContext context, DownloadState state) {
+    // Placeholder Urls
     String imageUrl =
         "https://samplelib.com/lib/preview/png/sample-hut-400x300.png";
     String userUrl = "https://reqres.in/api/users/2";
 
+    // Different Cases for Different States
     if (state is DownloadInitial) {
       return ElevatedButton(
           onPressed: () {
-            context.read<DownloadBloc>().add(DownloadImage(imageUrl, userUrl));
+            // Call Bloc to Download File
+            context.read<DownloadBloc>().add(DownloadAssets(imageUrl, userUrl));
           },
           style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -108,7 +111,34 @@ class _HomeState extends State<Home> {
         ],
       );
     } else {
-      return const Text("Error Downloading");
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("Error Downloading!"),
+          ),
+          state is DownloadError
+              ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                    state.error,
+                    softWrap: true,
+                  ),
+              )
+              : const SizedBox.shrink(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  context
+                      .read<DownloadBloc>()
+                      .add(DownloadAssets(imageUrl, userUrl));
+                },
+                child: const Text("Try Again")),
+          ),
+        ],
+      );
     }
   }
 }

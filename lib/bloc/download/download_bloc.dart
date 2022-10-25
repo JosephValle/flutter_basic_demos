@@ -15,7 +15,7 @@ class DownloadBloc extends Bloc<DownloadEvent, DownloadState> {
   File? file;
 
   DownloadBloc({required this.downloadRepository}) : super(DownloadInitial()) {
-    on<DownloadImage>((event, emit) async {
+    on<DownloadAssets>((event, emit) async {
       // Start by letting the user know download is in progress
       emit(DownloadLoading());
 

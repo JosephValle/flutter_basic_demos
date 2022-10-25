@@ -17,23 +17,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Initiating repositories
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => DownloadRepository())
       ],
+      // Initiating Blocs and Cubits
       child: MultiBlocProvider(
         providers: [
           BlocProvider<DownloadBloc>(
-              create: (context) =>
-                  DownloadBloc(
-                      downloadRepository: context.read<DownloadRepository>())),
+              create: (context) => DownloadBloc(
+                  downloadRepository: context.read<DownloadRepository>())),
           BlocProvider<ThemeCubit>(create: (context) => ThemeCubit())
         ],
+        // Creating a Universal Listener for theme changes
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Demo App',
+              // Here is what manages the theme
               theme: state.theme,
               home: const Home(),
             );
