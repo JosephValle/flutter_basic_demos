@@ -17,17 +17,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text("Settings"),
       ),
       body: Center(
-        child: ElevatedButton(
-          style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ))),
-          onPressed: () {
-            context.read<ThemeCubit>().toggleTheme(!context.read<ThemeCubit>().state.isDarkThemeOn);
-            print(context.read<ThemeCubit>().state.isDarkThemeOn);
-          },
-          child: const Text("Toggle Theme"),
+        child: Container(
+          width: 300,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ))),
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme(!context.read<ThemeCubit>().state.isDarkThemeOn);
+              setState(() {});
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Toggle Theme to: "),
+                Icon(!context.read<ThemeCubit>().state.isDarkThemeOn ? Icons.dark_mode : Icons.light_mode)
+              ],
+            ),
+          ),
         ),
       ),
     );

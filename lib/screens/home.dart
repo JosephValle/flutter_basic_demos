@@ -99,11 +99,11 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 context.read<DownloadBloc>().add(ResetDownload());
               },
-    style: ButtonStyle(
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-    RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(18.0),
-    ))),
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ))),
               child: const Text("Reset")),
         ],
       );
